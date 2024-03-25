@@ -1,0 +1,833 @@
+																				Assignment No-1 
+																		Topic: Dictionary, Array, NDArray 
+1) Write a Python Code to Create a Dictionary & perform the following operation- 
+a)Updating Dictionary Element 
+b)Delete Dictionary Element 
+c)Check Presence of key in Dictionary or Not 
+d)Print all keys & Values 
+
+emp_details = {'name': 'John', 'age': 25, 'salary': 25000, 'dept':'sales marketing'}
+
+emp_details['salary'] = 35000
+print("Updated salary:", emp_details)
+
+del emp_details['dept']
+print("Successfully Deleted",emp_details)
+
+x = input("Enter Key ")
+if x in emp_details.keys():
+    print("key is present in the dictionary.")
+else:
+    print(" key is not present in the dictionary")
+    
+for k in emp_details:
+    print(k,":",emp_details[k])
+
+Updated salary: {'name': 'John', 'age': 25, 'salary': 35000, 'dept': 'sales marketing'}
+Successfully Deleted {'name': 'John', 'age': 25, 'salary': 35000}
+Enter Keysalary
+key is present in the dictionary.
+name : John
+age : 25
+salary : 35000
+
+2)Write a Python Code to accept the number of student data in a dictionary like Name of Student, Roll Number, Marks and perform following operations  
+a)Display all student information  
+b)By Entering Mark find the Name of Student  
+
+students = {}
+n = int(input("how many students?"))
+for i in range(n):
+    name = input("enter the name")
+    marks = int(input("Enter the marks"))
+    students[name]=marks
+print(students)
+for k in students:
+    print(k,":",students[k])
+
+how many students?1
+enter the nameTejas Shinde
+Enter the marks89
+{'Tejas Shinde': 89}
+Tejas Shinde : 89
+
+3)Write a Python code to create a Simple array of one dimension to perform following array operations- 
+a)Display all individual element in array  
+b)Make Sum of all Elements in Array 
+
+import numpy as np
+arr = np.array([10, 20, 30, 40, 50])
+sum = 0
+print(arr)
+for i in arr:
+    sum = sum + i
+print("Total sum of array elements =", sum)
+
+[10 20 30 40 50]
+Total sum of array elements = 150
+
+4)Write a Python code to create Two Simple one dimensional array and make addition of both array elements into third array. 
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([10, 20, 30, 40, 50])
+result_list = []
+for i in range(len(arr1)):
+    result_list.append(arr1[i] + arr2[i])
+result_array = np.array(result_list)
+print("Array 1:", arr1)
+print("Array 2:", arr2)
+print("Result Array:", result_array)
+
+Array 1: [1 2 3 4 5]
+Array 2: [10 20 30 40 50]
+Result Array: [11 22 33 44 55]
+
+5)Write a Python code to find Minimum and Maximum value in an Array. 
+
+import numpy as np
+l = eval(input("Enter array value:"))
+arr = np.array(l)
+max = 0
+for i in range(0,len(arr)):
+    if max < arr[i]:
+        max = arr[i]
+print("Maximum value:",max)
+min = max
+for j in range(0,len(arr)):
+    if min>arr[j]:
+        min=arr[j]
+        print("Minimum value:",min)
+
+Enter array value:12,34,22,15
+Maximum value: 34
+Minimum value: 12
+
+6) Write a Python code to create a ndarray to perform the following operations 
+i)To find Dimensions of Array 
+ii)Display Data Type of Element 
+iii)Find Shape and Size of Array  
+iv)Delete Array Elements 
+
+import numpy as np
+
+a = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Number of dimensions:", a.ndim)
+print("Data type of elements:", a.dtype)
+print("Shape of the array:", a.shape)
+print("Size of the array:", a.size)
+
+# Delete the element at row 1, column 1
+x = np.delete(a, 1, axis=0)  # axis=0 for row-wise deletion
+print("After deleting a value:")
+print(x)
+
+Number of dimensions: 2
+Data type of elements: int32
+Shape of the array: (2, 3)
+Size of the array: 6
+After deleting a value:
+[[1 2 3]]
+
+7)Write a Python Code to create TWO ndarray and concatenate that both array. 
+
+import numpy as np
+
+a1 = np.array([[1.4, 2.4, 4.6], [1, 2, 3]])
+a2 = np.array([[5.1, 7.2, 8.7], [4, 5, 6]])
+a3 = np.concatenate((a1, a2), axis=0)
+print("When axis is zero:", a3)
+
+a4 = np.concatenate((a1, a2), axis=1)
+print("When axis is one:", a4)
+
+When axis is zero: [[1.4 2.4 4.6]
+ [1.  2.  3. ]
+ [5.1 7.2 8.7]
+ [4.  5.  6. ]]
+When axis is one: [[1.4 2.4 4.6 5.1 7.2 8.7]
+ [1.  2.  3.  4.  5.  6. ]]
+
+8) Write a Python Code to perform addition of all elements of ndarray. 
+
+import numpy as np
+
+a = np.array([[1, 2, 3, 4, 5], [5, 6, 7, 8, 9]])
+
+sum = 0
+for x in a:
+    for y in x:
+        sum = sum + y
+
+print("Sum of array elements =", sum)
+
+Sum of array elements = 50
+
+9) Write a python program to find minimum and maximum value in ndarray. 
+
+import numpy as np
+
+a = np.array([[1, 2, 3, 4, 5], [5, 6, 7, 8, 9]])
+
+max_value = 0
+for x in a:
+    for y in x:
+        if max_value < y:
+            max_value = y
+
+print("Maximum value =", max_value)
+
+min_value = max_value
+for x in a:
+    for y in x:
+        if min_value > y:
+            min_value = y
+print("Minimum value:",min_value)
+
+Maximum value = 9
+Minimum value: 1
+
+10) Write a Python program to perform array broadcasting in Two ndarray. 
+
+import numpy as np
+arr1 = np.array([[1, 2, 3],[4, 5, 6],[7,8,9]])
+arr2 = np.array([5, 5, 5])
+print("Broadcasted array",arr1*arr2)
+
+Broadcasted array [[ 5 10 15]
+ [20 25 30]
+ [35 40 45]]												
+
+																			Assignment No-2 
+																			Topic: Series, DataFrame 
+1) Write a Python Code to create a Series by- 
+i)From Array 
+ii)From Dictionary 
+iii)From Scalar 
+
+# Array
+import pandas as pd
+import numpy as np
+
+a = np.array(["C","Java","Python"])
+s = pd.Series(a)
+print(s)
+
+0         C
+1      Java
+2    Python
+dtype: object
+
+# Dictionary
+import pandas as pd
+import numpy as np
+info = {'x':1,'y':2,'z':3}
+s = pd.Series(info)
+print(s)
+
+x    1
+y    2
+z    3
+dtype: int64
+
+# Scalar
+import pandas as pd
+import numpy as np
+s = pd.Series(4,index=[0,1,2,3])
+print(s)
+
+0    4
+1    4
+2    4
+3    4
+dtype: int64
+
+2)Write a Python Code to create a DataFrame and perform the following column operations (Use Following DataSet) 
+i)Column Selection in DataFrame 
+ii)Addition of Two Column Values 
+iii)Deletion of Column 
+
+import numpy as np
+import pandas as pd
+
+# Define index values
+index_values = ['a', 'b', 'c', 'd']
+index_values2 = ['e', 'f', 'g', 'h']
+
+info = {'One': pd.Series([1, 2, 3, 4], index=index_values),
+        'Second': pd.Series([5, 6, 7, 8], index=index_values)}
+
+df = pd.DataFrame(info)
+print(df['One'])
+
+df['Three'] = pd.Series([10, 11, 12, 13], index=index_values2)
+print(df)
+
+df['Three'] = df['One'] + df['Second']
+print(df)
+
+del df['Second']  # or df.pop('Second')
+print(df)
+
+a    1
+b    2
+c    3
+d    4
+Name: One, dtype: int64
+   One  Second  Three
+a    1       5    NaN
+b    2       6    NaN
+c    3       7    NaN
+d    4       8    NaN
+   One  Second  Three
+a    1       5      6
+b    2       6      8
+c    3       7     10
+d    4       8     12
+   One  Three
+a    1      6
+b    2      8
+c    3     10
+d    4     12
+
+ 
+3) Write a Python code to Create DataFrame to perform following Row Operations(Use Following DataSet) 
+i)Selection of row  
+
+import numpy as np
+import pandas as pd
+
+info = {'One': pd.Series([1, 2, 3, 4], index=[a, b, c, d]),
+        'Second': pd.Series([5, 6, 7, 8], index=[a, b, c, d])}
+
+df = pd.DataFrame(info)
+print(df.loc['B'])
+
+
+One       2
+Second    6
+Name: B, dtype: int64
+
+ii)Insertion of new row  
+
+import numpy as np
+import pandas as pd
+
+d1 = pd.DataFrame([[1, 2, 3], [4, 5, 6]], columns=['X', 'Y', 'Z'])
+d2 = pd.DataFrame([[4, 5, 6], [7, 8, 9]], columns=['X', 'Y', 'Z'])
+
+d1 = pd.concat([d1, d2], ignore_index=True)
+print(d1)
+
+ X  Y  Z
+0  1  2  3
+1  4  5  6
+2  4  5  6
+3  7  8  9
+
+iii)Deletion of any row 
+
+import pandas as pd
+info = {'one':pd.Series([1, 2, 3, 4, 5], index = [0,1,2,3,4]), 'two':pd.Series([4,5,6,7,8], index = [0,1,2,3,4])}
+df = pd.DataFrame(info)
+df = df.drop(0)
+print(df)
+
+ one  two
+1    2    5
+2    3    6
+3    4    7
+4    5    8
+
+
+4) Write a python code to perform various indexing operation (Use Following DataSet) 
+i)Label Based Indexing(.loc) 
+
+import pandas as pd
+info = {'one':pd.Series([1,2,3,4,5],index = ['a','b','c','d','e']),'two':pd.Series([7,8,9,10,11],index = ['a','b','c','d','e'])}
+df = pd.DataFrame(info)
+print(df.loc['c':'one'])
+
+ one  two
+c    3    9
+d    4   10
+e    5   11
+
+ii)Integer Based Indexing (.iloc) 
+
+import pandas as pd
+info = {'one':pd.Series([1,2,3,4,5]),'two':pd.Series([7,8,9,10,11])}
+df = pd.DataFrame(info)
+print(df)
+print(df.iloc[ :3])
+print(df.iloc[1:4])
+
+ one  two
+0    1    7
+1    2    8
+2    3    9
+3    4   10
+4    5   11
+   one  two
+0    1    7
+1    2    8
+2    3    9
+   one  two
+1    2    8
+2    3    9
+3    4   10
+
+5)Write a Python Code to perform Following Boolean Indexing Operations(Use 
+Following DataSet) 
+i)Accessing Dataframe by .loc() 
+
+import pandas as pd
+dict = {'name':["Aparna","Pankaj","Sudhir","Geeta"],'age':[18,22,21,20],'degree':["BCA","MBA","MCA","BTECH"],'score':[90,49,84,85]}
+df = pd.DataFrame(dict, index =["True","False","True","False"])
+print(df)
+print(df.loc['True'])
+
+        name  age degree  score
+True   Aparna   18    BCA     90
+False  Pankaj   22    MBA     49
+True   Sudhir   21    MCA     84
+False   Geeta   20  BTECH     85
+        name  age degree  score
+True  Aparna   18    BCA     90
+True  Sudhir   21    MCA     84
+
+ii)Apply Boolean Mask to Dataframe 
+
+import pandas as pd
+
+data = {'name': ["Aparna", "Pankaj", "Sudhir", "Geeta"],
+        'degree': ["BCA", "MBA", "MCA", "BSC"],
+        'score': [90, 49, 84, 68]}
+
+df = pd.DataFrame(data, index=[0, 1, 2, 3])
+mask = [True, False, True, False]
+result = df[mask]
+print(result)
+
+     name degree  score
+0  Aparna    BCA     90
+2  Sudhir    MCA     84
+
+6)Write a Python code to create a DataFrame to perform the following operations 
+i)Masking Data Based on Column Value 
+
+import pandas as pd
+
+data = {'name': ["Aparna", "Pankaj", "Sudhir", "Geeta"],
+        'degree': ["BCA", "MBA", "MCA", "BSC"],
+        'score': [90, 49, 84, 68]}
+df = pd.DataFrame(data)
+filtered_df = df[df['degree'] == "BCA"]
+print(filtered_df)
+
+ name degree  score
+0  Aparna    BCA     90
+
+ii)Masking Data Based on Index Value 
+
+import pandas as pd
+
+# Sample DataFrame
+data = {'name': ["Aparna", "Pankaj", "Sudhir", "Geeta"],
+        'degree': ["BCA", "MBA", "MCA", "BSC"],
+        'score': [90, 49, 84, 68]}
+df = pd.DataFrame(data)
+
+# Index values to mask
+index_to_mask = [1, 3]  # For example, masking rows with index 1 and 3
+
+# Masking the 'score' column based on the index values
+df.loc[index_to_mask, 'score'] = None  # Replace with any value you want to mask with
+
+print(df)
+
+name degree  score
+0  Aparna    BCA   90.0
+1  Pankaj    MBA    NaN
+2  Sudhir    MCA   84.0
+3   Geeta    BSC    NaN
+
+7) Write a Python code to create Two DataFrame & Merge that DataFrame by Unique Key Combination in both list(i.e. by on=’key’) 
+
+import pandas as pd
+info1 = {'key':['ko','k1','k2'],'name':['Sachin','Mahesh','Kartik']}
+df1 = pd.DataFrame(info1)
+info2 = {'key':['ko','k1','k2'],'city':['pune','mumbai','baramati']}
+df2 = pd.DataFrame(info2)
+res = pd.merge(df1,df2,on='key')
+print(res)
+
+ key    name      city
+0  ko  Sachin      pune
+1  k1  Mahesh    mumbai
+2  k2  Kartik  baramati
+
+8) Write a Python code to Create a Two DataFrame & Merge that DataFrame by how in an arguments by following ways- 
+i)Left Outer Join  
+iii)Outer Join  
+ii)Right Outer Join 
+iv)Inner Join 
+
+import pandas as pd
+
+info1 = {'key': ['ko', 'k1', 'k2'], 'name': ['Sachin', 'Mahesh', 'Kartik'], 'Age': [20, 24, 25]}
+df1 = pd.DataFrame(info1)
+
+info2 = {'key': ['ko', 'k1', 'k2'], 'city': ['Pune', 'Mumbai', 'Baramati']}
+df2 = pd.DataFrame(info2)
+
+# Left join
+res_left = pd.merge(df1, df2, how="left")
+print("Left Join:")
+print(res_left)
+
+# Right join
+res_right = pd.merge(df1, df2, how="right")
+print("\nRight Join:")
+print(res_right)
+
+# Inner join
+res_inner = pd.merge(df1, df2, how="inner")
+print("\nInner Join:")
+print(res_inner)
+
+# Outer join
+res_outer = pd.merge(df1, df2, how="outer")
+print("\nOuter Join:")
+print(res_outer)
+
+Left Join:
+  key    name  Age      city
+0  ko  Sachin   20      Pune
+1  k1  Mahesh   24    Mumbai
+2  k2  Kartik   25  Baramati
+
+Right Join:
+  key    name  Age      city
+0  ko  Sachin   20      Pune
+1  k1  Mahesh   24    Mumbai
+2  k2  Kartik   25  Baramati
+
+Inner Join:
+  key    name  Age      city
+0  ko  Sachin   20      Pune
+1  k1  Mahesh   24    Mumbai
+2  k2  Kartik   25  Baramati
+
+Outer Join:
+  key    name  Age      city
+0  ko  Sachin   20      Pune
+1  k1  Mahesh   24    Mumbai
+2  k2  Kartik   25  Baramati
+
+9)Write a Python code to Create a Two DataFrame and perform following operations 
+i)Joining of DataFrame 
+import pandas as pd
+
+data1 = {'Name':["Pranav","Gaurav","Geeta"],'Age':[20,21,20]}
+df1 = pd.DataFrame(data1)
+
+data2 = {'Address':["Pune","Baramati","Solapur"],'Degree':["BCA","BBA","BSC"]}
+df2 = pd.DataFrame(data2)
+
+df3 = df1.join(df2)
+print(df3)
+
+     Name  Age   Address Degree
+0  Pranav   20      Pune    BCA
+1  Gaurav   21  Baramati    BBA
+2   Geeta   20   Solapur    BSC
+
+ii)Concatenate DataFrame by Both Vertical & Horizontal Ways 
+
+import pandas as pd
+
+data1 = {'Name':["Pranav","Gaurav","Geeta"],'Age':[20,21,20]}
+df1 = pd.DataFrame(data1)
+
+data2 = {'Address':["Pune","Baramati","Solapur"],'Degree':["BCA","BBA","BSC"]}
+df2 = pd.DataFrame(data2)
+
+vdf = pd.concat(([df1,df2]),axis=0)
+hdf = pd.concat(([df1,df2]),axis=1)
+
+print(vdf)
+print(hdf)
+
+ Name   Age   Address Degree
+0  Pranav  20.0       NaN    NaN
+1  Gaurav  21.0       NaN    NaN
+2   Geeta  20.0       NaN    NaN
+0     NaN   NaN      Pune    BCA
+1     NaN   NaN  Baramati    BBA
+2     NaN   NaN   Solapur    BSC
+     Name  Age   Address Degree
+0  Pranav   20      Pune    BCA
+1  Gaurav   21  Baramati    BBA
+2   Geeta   20   Solapur    BSC
+
+10) Write a Python Code to Create a DataFrame to perform – 
+i)Sorting Dataframe by column in Ascending Order  
+ii)Sorting Dataframe by column in Descending Order  
+iii)Sorting Dataframe by Multiple Columns 
+
+import pandas as pd
+
+data = {'country': ["Australia", "India", "France"], 'year': [1957, 1952, 1957], 'population': [9712579, 346801102, 44310863]}
+df = pd.DataFrame(data)
+
+# Sorting by 'country' in ascending order
+df_sorted_country = df.sort_values(by='country')
+print("Sorted by 'country':")
+print(df_sorted_country)
+
+# Sorting by 'population' in descending order
+df_sorted_population = df.sort_values(by='population', ascending=False)
+print("\nSorted by 'population' in descending order:")
+print(df_sorted_population)
+
+# Sorting by 'country' in ascending order and then by 'year' in descending order
+df_sorted_country_year = df.sort_values(by=['country', 'year'], ascending=[True, False])
+print("\nSorted by 'country' and 'year':")
+print(df_sorted_country_year)
+
+Sorted by 'country':
+     country  year  population
+0  Australia  1957     9712579
+2     France  1957    44310863
+1      India  1952   346801102
+
+Sorted by 'population' in descending order:
+     country  year  population
+1      India  1952   346801102
+2     France  1957    44310863
+0  Australia  1957     9712579
+
+Sorted by 'country' and 'year':
+     country  year  population
+0  Australia  1957     9712579
+2     France  1957    44310863
+1      India  1952   346801102
+
+
+																					Assignment No-03 
+																					Topic: Visualizations 
+Program No.1) Create an Array in the range 1 to 20 with values 1.25 apart. Another array contains the log values of the elements in first array. 
+a) Simply plot the two arrays first vs second in a line chart 
+b) Change the x-axis label as “Random Values” & Y-axis as “Logarithmic values” 
+c) create a third array that shows the cos values of first array and plot that with first array.The Cos line should be plotted with a dashdotted line. 
+
+import numpy as np
+import matplotlib.pyplot as pl
+x=np.linspace(2,5,3)
+print(x)
+y=np.cos(x)
+print(y)
+pl.plot(x,y)
+pl.plot(x,y,color="red")
+pl.xlabel("Actual Values")
+pl.ylabel("Logarithmic Values")
+z=np.cos(x)
+pl.plot(x,z,color="blue",linestyle="dashdot")
+pl.show()
+
+Program No.2)T.C.College celebrated volunteering week where each section of class TY dedicated a day for collecting amount for charity being supported by the college.Section A volunteered on Monday, B on Tuesday, C on Wednesday and so on.There are six section in class TY.Amount collected by sections A to F are 8000,12000,9800,11200,15500,7300. 
+A)create a bar chart showing collection of amount. 
+B)Plot the collected amount vs days using a bar chart. 
+C)Plot the collected amount vs Sections using bar chart. 
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(1, 7)
+y = np.array([8000, 12000, 9800, 11200, 15500, 7300])
+
+plt.bar(x, y, color="green", width=0.3)  # Adjusted width for better visibility
+plt.xlabel("Days")  # Adjusted x-axis label
+plt.ylabel("Amount Collection")
+plt.title("Amount Collection vs Days")
+plt.xticks(x, ['Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday'])  # Specify x-axis tick labels
+plt.show()
+
+Program No.3) Write to create a pie for sequence con=[23.4,17.8,25,34,40] for zones=[‘East’,’West’,’North’,’South’,’Central’]. 
+A)Show North Zone’s Value Exploded 
+B)Show % Contribution for each zone 
+C)The Pie Chart should be Circular 
+
+import numpy as np
+import matplotlib.pyplot as pl
+x=np.array(["East","West","North","South","Central"])
+y=np.array([23.4,17.8,25,34,40])
+xl=[0,0,0.2,0,0]
+pl.pie(y,labels=x,explode=xl,autopct="%2.2f%%")
+pl.show()
+
+Program No.4) Create a multiline line charts on common plot where three data ranges are plotted on same chart. The data ranges to be plotted is – 
+Data=[[5.0, 25.0, 45.0, 20.0],[8.0,13.0,29.0,27.0],[9.0,29.0,27.0,39.0]] 
+
+import matplotlib.pyplot as plt
+
+# Data ranges to be plotted
+data = [[5.0, 25.0, 45.0, 20.0], [8.0, 13.0, 29.0, 27.0], [9.0, 29.0, 27.0, 39.0]]
+
+# Plotting the data
+plt.plot(data[0], label='Data Range 1')
+plt.plot(data[1], label='Data Range 2')
+plt.plot(data[2], label='Data Range 3')
+
+# Adding labels and title
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Multiline Line Chart')
+
+# Adding legend
+plt.legend()
+
+# Displaying the plot
+plt.show()
+
+Program No.5)Create a Scatter Plot Chart having two array as follows. 
+[5,7,8,7,2,17,2,9,4,11,12,9,6] 
+[99,86,87,88,111,86,103,87,94,78,77,85,86] 
+a)Show simple scatter plot. 
+b)Set your own color of the Markers. 
+
+import matplotlib.pyplot as plt
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+col=(["Red","Green","Blue","Violet","Yellow","Pink","Black","Grey","Indigo","Orange","Tan","Teal","Maroon"])
+plt.scatter(x, y,c=col)
+plt.show()
+
+Que.6)Write a Python Code to create Tree by using Bigtree library of python the output display should be in following form 
+a [age=90]  
+├── b [age=65]  
+└── c [age=60]  
+
+from bigtree import Node, print_tree
+
+root = Node("a", age=90)
+b = Node("b", age=65, parent=root)
+c = Node("c", age=60, parent=root)
+
+print_tree(root, attr_list=["age"])
+
+Que.7)Write a Python Code to create Tree by using Bigtree library of python the 
+output display should be in following form  
+Language  
+├── Python  
+│   ├── Pandas  
+│   └── Django 
+└── java  
+
+from bigtree import Node
+root=Node("Language",age=95)
+a=Node("Python",parent=root)
+b=Node("Pandas",parent=a)
+g=Node("Django",parent=a)
+c=Node("java",parent=root)
+root.show()
+
+																					Assignment Number-04 
+1) Write a Python code to perform the following operations use following dataset 
+i)Check empty or missing data in all dataset 
+ii)Check empty or missing data in column ‘Postcode’  
+iii)Display total count of missing data in each column 
+iv)Drop rows that are having missing values 
+
+import pandas as pd
+info = pd.read_csv("your_dataset.csv")  
+df = pd.DataFrame(info)
+print(df)
+print("Empty & null values:", df.isnull().any())
+print("Empty & null values in postcode:", df['postcode'].isnull().any())
+print("Total count of missing values in each column:")
+print(df.isnull().sum())
+print("Dropping rows with missing values:")
+print(df.dropna())
+
+2)  Write a Python code to perform the following operations use following dataset 
+i)Display unique value in column ‘Price’ 
+ii)Display total number (Count) unique value  
+iii)Display duplicate  rows in dataset 
+iv)Display total count of all duplicates  
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+
+# Display descriptive statistics of the dataset
+print(df.describe())
+
+# i) Display unique values in column 'price'
+print("Unique values in column 'price':", df['price'].unique())
+
+# ii) Display total number of unique values
+print("Total number of unique values:", df.nunique())
+
+# iii) Display duplicate rows in dataset
+duplicate_rows = df[df.duplicated()]
+print("Duplicate rows in dataset:")
+print(duplicate_rows)
+
+# iv) Display total count of all duplicate values
+total_duplicates = duplicate_rows.shape[0]
+print("Total count of all duplicate values:", total_duplicates)
+
+3) Write a Python code to perform the following operations use following dataset 
+i)Find the total marks of column Maths 
+ii)Find the Mean & standard deviation of marks in column Science 
+iii)Find minimum marks in Physics & Maximum marks in Maths 
+iv)Find minimum marks all Subjects 
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+
+print("Total marks of maths:", df['maths'].sum())
+print("Mean of science:", df['science'].mean())
+print("Standard deviation of science:", df['science'].std())
+print("Minimum mark in physics:", df['physics'].min())
+print("Maximum marks in maths:", df['maths'].max())
+print("Minimum marks in all subjects:")
+print(df.min())
+
+
+4) Write a Python code to perform the following operations use following dataset 
+i)Use groupby function to create a group of “Course” 
+ii)Display first row Group “Course” 
+iii)Display all rows in a Group “Course” 
+iv)Create a group “Maths” & display its mean
+
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+
+# Grouping by 'course' column
+grouped_by_course = df.groupby("course")
+print("Grouping by course:", grouped_by_course)
+
+# Displaying first row of each group
+print("Displaying first row of each group:")
+print(grouped_by_course.first())
+
+# Iterating over each group
+for name, group in grouped_by_course:
+    print("All rows in group", name)
+    print(group)
+
+# Grouping by 'name' and calculating mean of 'maths'
+mean_maths_by_name = df.groupby('name')['maths'].mean()
+print("Grouping by 'name' and displaying mean of 'maths':")
+print(mean_maths_by_name)
+
