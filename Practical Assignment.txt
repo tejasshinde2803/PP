@@ -1,0 +1,689 @@
+																				Assignment No-1 
+																		Topic: Dictionary, Array, NDArray 
+1) Write a Python Code to Create a Dictionary & perform the following operation- 
+a)Updating Dictionary Element 
+b)Delete Dictionary Element 
+c)Check Presence of key in Dictionary or Not 
+d)Print all keys & Values 
+
+emp_details = {'name': 'John', 'age': 25, 'salary': 25000, 'dept':'sales marketing'}
+
+emp_details['salary'] = 35000
+print("Updated salary:", emp_details)
+
+del emp_details['dept']
+print("Successfully Deleted",emp_details)
+
+x = input("Enter Key ")
+if x in emp_details.keys():
+    print("key is present in the dictionary.")
+else:
+    print(" key is not present in the dictionary")
+    
+for k in emp_details:
+    print(k,":",emp_details[k])
+
+
+2)Write a Python Code to accept the number of student data in a dictionary like Name of Student, Roll Number, Marks and perform following operations  
+a)Display all student information  
+b)By Entering Mark find the Name of Student  
+
+students = {}
+n = int(input("how many students?"))
+for i in range(n):
+    name = input("enter the name")
+    marks = int(input("Enter the marks"))
+    students[name]=marks
+print(students)
+for k in students:
+    print(k,":",students[k])
+
+
+3)Write a Python code to create a Simple array of one dimension to perform following array operations- 
+a)Display all individual element in array  
+b)Make Sum of all Elements in Array 
+
+import numpy as np
+arr = np.array([10, 20, 30, 40, 50])
+sum = 0
+print(arr)
+for i in arr:
+    sum = sum + i
+print("Total sum of array elements =", sum)
+
+
+4)Write a Python code to create Two Simple one dimensional array and make addition of both array elements into third array. 
+
+import numpy as np
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([10, 20, 30, 40, 50])
+result_list = []
+for i in range(len(arr1)):
+    result_list.append(arr1[i] + arr2[i])
+result_array = np.array(result_list)
+print("Array 1:", arr1)
+print("Array 2:", arr2)
+print("Result Array:", result_array)
+
+5)Write a Python code to find Minimum and Maximum value in an Array. 
+
+import numpy as np
+l = eval(input("Enter array value:"))
+arr = np.array(l)
+max = 0
+for i in range(0,len(arr)):
+    if max < arr[i]:
+        max = arr[i]
+print("Maximum value:",max)
+min = max
+for j in range(0,len(arr)):
+    if min>arr[j]:
+        min=arr[j]
+        print("Minimum value:",min)
+
+
+6) Write a Python code to create a ndarray to perform the following operations 
+i)To find Dimensions of Array 
+ii)Display Data Type of Element 
+iii)Find Shape and Size of Array  
+iv)Delete Array Elements 
+
+import numpy as np
+
+a = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Number of dimensions:", a.ndim)
+print("Data type of elements:", a.dtype)
+print("Shape of the array:", a.shape)
+print("Size of the array:", a.size)
+
+x = np.delete(a, 1, axis=0) 
+print("After deleting a value:")
+print(x)
+
+7)Write a Python Code to create TWO ndarray and concatenate that both array. 
+
+import numpy as np
+
+a1 = np.array([[1.4, 2.4, 4.6], [1, 2, 3]])
+a2 = np.array([[5.1, 7.2, 8.7], [4, 5, 6]])
+a3 = np.concatenate((a1, a2), axis=0)
+print("When axis is zero:", a3)
+
+a4 = np.concatenate((a1, a2), axis=1)
+print("When axis is one:", a4)
+
+
+8) Write a Python Code to perform addition of all elements of ndarray. 
+
+import numpy as np
+a = np.array([[1, 2, 3, 4, 5], [5, 6, 7, 8, 9]])
+sum = 0
+for x in a:
+    for y in x:
+        sum = sum + y
+print("Sum of array elements =", sum)
+
+9) Write a python program to find minimum and maximum value in ndarray. 
+
+import numpy as np
+a = np.array([[1, 2, 3, 4, 5], [5, 6, 7, 8, 9]])
+max_value = 0
+for x in a:
+    for y in x:
+        if max_value < y:
+            max_value = y
+print("Maximum value =", max_value)
+
+min_value = max_value
+for x in a:
+    for y in x:
+        if min_value > y:
+            min_value = y
+print("Minimum value:",min_value)
+
+10) Write a Python program to perform array broadcasting in Two ndarray. 
+
+import numpy as np
+arr1 = np.array([[1, 2, 3],[4, 5, 6],[7,8,9]])
+arr2 = np.array([5, 5, 5])
+print("Broadcasted array",arr1*arr2)
+
+																			Assignment No-2 
+																			Topic: Series, DataFrame 
+1) Write a Python Code to create a Series by- 
+i)From Array 
+ii)From Dictionary 
+iii)From Scalar 
+
+import pandas as pd
+import numpy as np
+
+a = np.array(["C","Java","Python"])
+s = pd.Series(a)
+
+info = {'x':1,'y':2,'z':3}
+s = pd.Series(info)
+print(s)
+
+print("Converted Dictionary =", s)
+s3 = pd.Series(4,index=[0,1,2,3])
+print(s3)
+
+
+2)Write a Python Code to create a DataFrame and perform the following column operations (Use Following DataSet) 
+i)Column Selection in DataFrame 
+ii)Addition of Two Column Values 
+iii)Deletion of Column 
+
+import numpy as np
+import pandas as pd
+
+info = {"name":["Sachin","Kartik","Piyush","Mahesh"],"age":[21,22,21,23],"city":["Pune","Solapur","Kolhapur","Banglore"], "Maths":[54,67,89,95], "Science":[23,45,67,89]}
+print(info)
+df = pd.DataFrame(info)
+print(df)
+print(df["city"])
+df["total"] = df["Science"]+ df["Maths"]
+print(df)
+df.pop("age")
+print(df)
+
+ 
+3) Write a Python code to Create DataFrame to perform following Row Operations(Use Following DataSet) 
+i)Selection of row  
+ii)Insertion of new row  
+iii)Deletion of any row 
+
+import numpy as np
+import pandas as pd
+
+info = {"name":["Sachin","Kartik","Piyush","Mahesh"],"age":[21,22,21,23],"city":["Pune","Solapur","Kolhapur","Banglore"], "Maths":[54,67,89,95], "Science":[23,45,67,89]}
+print(info)
+df = pd.DataFrame(info)
+print("Deletion of any row")
+print(df.iloc[:2])
+print("Assigning index")
+df = pd.DataFrame(info,index=['a','b','c','d'])
+print(df)
+print(df.loc[:'c'])
+print("Insertion of new row")
+info1 = {"name":["Tejas"],"age":[20],"city":["pune"],"maths":[76],"Science":[86]}
+df = pd.DataFrame(info1,index=['d'])
+print(df)
+
+
+4) Write a python code to perform various indexing operation (Use Following DataSet) 
+i)Label Based Indexing(.loc) 
+ii)Integer Based Indexing (.iloc) 
+
+import pandas as pd
+import numpy as np
+info = {'name':["Sachin","Kartik","Piyush","Mahesh"],'age':[18,22,21,20],'city':["Pune","Solapur","Kolhapur","Banglore"],'Science':[85,81,88,85],'Maths':[90,92,97,85]}
+print(info)
+df = pd.DataFrame(info,index=['a','b','c','d'])
+print(df)
+print("Label Based Indexing")
+print(df.loc[ :'b'])
+df=pd.DataFrame(info,index=[0,1,2,3])
+print(df)
+print("Integer Based Indexing")
+print(df.iloc[:3])
+
+5)Write a Python Code to perform Following Boolean Indexing Operations(Use Following DataSet) 
+i)Accessing Dataframe by .loc()     
+ii)Apply Boolean Mask to Dataframe 
+
+import pandas as pd
+student = {'name':['Aparna','Pankaj','Piyush','Geeta'],'age':[18,22,21,20],'degree':['BCA','MBA','BBA','BTECH'],'score':[85,87,88,85]}
+print("Student Dictionary:",student)
+df = pd.DataFrame(student,index=["True","False","True","False"])
+print(df)
+print(df.loc["True"])
+ndf = pd.DataFrame(student,index=[0,1,2,3])
+print("Boolean Mask")
+print(ndf)
+print(ndf.loc[[True,True,False,False]])
+
+
+6)Write a Python code to create a DataFrame to perform the following operations 
+i)Masking Data Based on Column Value 
+ii)Masking Data Based on Index Value 
+
+import pandas as pd
+student = {'name':['Aparna','Pankaj','Piyush','Geeta'],'age':[18,22,21,20],'degree':['BCA','MBA','BBA','BTECH'],'score':[85,87,88,85]}
+print("Student Dictionary:",student)
+df = pd.DataFrame(student,index=["True","False","True","False"])
+print(df)
+print("Based On Column Values")
+print(df['degree']=="BCA")
+print("Based on Indexing Values")
+ndf = pd.DataFrame(student,index=[0,1,2,3])
+print(ndf)
+mask=ndf.index==2
+print(ndf[mask])
+
+
+7) Write a Python code to create Two DataFrame & Merge that DataFrame by Unique Key Combination in both list(i.e. by on=’key’) 
+
+import pandas as pd
+import numpy as np
+student = {'name':['Aparna','Pankaj','Piyush','Geeta'],'age':[18,22,21,20],'degree':['BCA','MBA','BBA','BTECH'],'score':[85,87,88,85]}
+df = pd.DataFrame(student)
+print("First Record",df)
+student1 ={'name':['Aparna','Pankaj','Piyush','Geeta'],'score':[85,87,88,85]}
+df2=pd.DataFrame(student1)
+print("Second Record",df2)
+print("Merged Record")
+df3 = df.merge(df2,on="name")
+print(df3)
+
+8) Write a Python code to Create a Two DataFrame & Merge that DataFrame by how in an arguments by following ways- 
+i)Left Outer Join  
+iii)Outer Join  
+ii)Right Outer Join 
+iv)Inner Join 
+
+import pandas as pd
+import numpy as np
+student1 = {'name':['Aparna','Pankaj','Piyush','Geeta'],'age':[18,22,21,20],'degree':['BCA','MBA','BBA','BTECH']}
+df1 = pd.DataFrame(student1)
+print("First Record",df1)
+
+student2 = {'name':['Aparna','Pankaj','Piyush','Pranita'],'city':['Pune','Solapur','Kolhapur','Nashik'],'score':[85,87,88,85]}
+df2 = pd.DataFrame(student2)
+print("Second Record",df2)
+
+print("Left Outer Join")
+df3 = pd.merge(df1,df2,how="left",on="name")
+print(df3)
+
+print("Right Outer Join")
+df4 = pd.merge(df1,df2,how="right",on="name")
+print(df4)
+
+print("Outer Join")
+df5 = pd.merge(df1,df2,how="outer",on="name")
+print(df5)
+
+print("Inner Join")
+df6 = pd.merge(df1,df2,how="inner",on="name")
+print(df6)
+
+9)Write a Python code to Create a Two DataFrame and perform following operations 
+i)Joining of DataFrame    
+ii)Concatenate DataFrame by Both Vertical & Horizontal Ways 
+
+import pandas as pd
+import numpy as np
+
+student1={'name':['Aparna','Pankaj','Piyush','Geeta'],'age':[18,22,21,20],'degree':['BCA','MBA','BBA','BTECH']}
+df1 = pd.DataFrame(student1,index=['a','b','c','d'])
+print("First Record",df1)
+
+student2={'city':['Pune','Solapur','Kolhapur','Nashik'],'score':[85,87,88,85]}
+df2 = pd.DataFrame(student2,index=['a','b','c','d'])
+print("Second Recored",df2)
+
+print("Joining of DataFrame")
+res = df1.join(df2)
+print(res)
+
+print("Concatenate DataFrame By Vertical & Horizontal way")
+df3 = pd.concat([df1,df2],axis=0)
+print(df3)
+
+df4=pd.concat([df1,df2],axis=1)
+print(df4)
+
+
+ 
+10) Write a Python Code to Create a DataFrame to perform – 
+i)Sorting Dataframe by column in Ascending Order  
+ii)Sorting Dataframe by column in Descending Order  
+iii)Sorting Dataframe by Multiple Columns 
+
+import pandas as pd
+import numpy as np
+
+student = {'name':['Aparna','Pranav','Piyush','Geeta'],'age':[18,22,20,21],'city':['Pune','Solapur','Kolhapur','Nashik'],'Science':[85,87,88,85],'maths':[90,92,87,85],'phy':[78,85,90,82]}
+print(student)
+df=pd.DataFrame(student,index=[0,1,2,3])
+print(df)
+print("sort DataFrame")
+print(df.sort_values(by=["name"]))
+print("sort by ascending order")
+print(df.sort_values(by=["age"],ascending=False))
+
+print("sort by multiple columns")
+print(df.sort_values(by=['name','age'],ascending=False))
+
+																					Assignment No-03 
+																					Topic: Visualizations 
+Program No.1) Create an Array in the range 1 to 20 with values 1.25 apart. Another array contains the log values of the elements in first array. 
+a) Simply plot the two arrays first vs second in a line chart 
+b) Change the x-axis label as “Random Values” & Y-axis as “Logarithmic values” 
+c) create a third array that shows the cos values of first array and plot that with first array.The Cos line should be plotted with a dashdotted line. 
+
+import numpy as np
+import matplotlib.pyplot as pl
+x=np.linspace(2,5,3)
+print(x)
+y=np.cos(x)
+print(y)
+pl.plot(x,y)
+pl.plot(x,y,color="red")
+pl.xlabel("Actual Values")
+pl.ylabel("Logarithmic Values")
+z=np.cos(x)
+pl.plot(x,z,color="blue",linestyle="dashdot")
+pl.show()
+
+Program No.2)T.C.College celebrated volunteering week where each section of class TY dedicated a day for collecting amount for charity being supported by the college.Section A volunteered on Monday, B on Tuesday, C on Wednesday and so on.There are six section in class TY.Amount collected by sections A to F are 8000,12000,9800,11200,15500,7300. 
+A)create a bar chart showing collection of amount. 
+B)Plot the collected amount vs days using a bar chart. 
+C)Plot the collected amount vs Sections using bar chart. 
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(1, 7)
+y = np.array([8000, 12000, 9800, 11200, 15500, 7300])
+
+plt.bar(x, y, color="green", width=0.3)  # Adjusted width for better visibility
+plt.xlabel("Days")  # Adjusted x-axis label
+plt.ylabel("Amount Collection")
+plt.title("Amount Collection vs Days")
+plt.xticks(x, ['Monday', 'Tuesday', 'Wednsday', 'Thursday', 'Friday', 'Saturday'])  # Specify x-axis tick labels
+plt.show()
+
+Program No.3) Write to create a pie for sequence con=[23.4,17.8,25,34,40] for zones=[‘East’,’West’,’North’,’South’,’Central’]. 
+A)Show North Zone’s Value Exploded 
+B)Show % Contribution for each zone 
+C)The Pie Chart should be Circular 
+
+import numpy as np
+import matplotlib.pyplot as pl
+x=np.array(["East","West","North","South","Central"])
+y=np.array([23.4,17.8,25,34,40])
+xl=[0,0,0.2,0,0]
+pl.pie(y,labels=x,explode=xl,autopct="%2.2f%%")
+pl.show()
+
+Program No.4) Create a multiline line charts on common plot where three data ranges are plotted on same chart. The data ranges to be plotted is – 
+Data=[[5.0, 25.0, 45.0, 20.0],[8.0,13.0,29.0,27.0],[9.0,29.0,27.0,39.0]] 
+
+import matplotlib.pyplot as plt
+
+data = [[5.0, 25.0, 45.0, 20.0], [8.0, 13.0, 29.0, 27.0], [9.0, 29.0, 27.0, 39.0]]
+
+plt.plot(data[0], label='Data Range 1')
+plt.plot(data[1], label='Data Range 2')
+plt.plot(data[2], label='Data Range 3')
+
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Multiline Line Chart')
+
+plt.legend()
+plt.show()
+
+Program No.5)Create a Scatter Plot Chart having two array as follows. 
+[5,7,8,7,2,17,2,9,4,11,12,9,6] 
+[99,86,87,88,111,86,103,87,94,78,77,85,86] 
+a)Show simple scatter plot. 
+b)Set your own color of the Markers. 
+
+import matplotlib.pyplot as plt
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+col=(["Red","Green","Blue","Violet","Yellow","Pink","Black","Grey","Indigo","Orange","Tan","Teal","Maroon"])
+plt.scatter(x, y,c=col)
+plt.show()
+
+Que.6)Write a Python Code to create Tree by using Bigtree library of python the output display should be in following form 
+a [age=90]  
+├── b [age=65]  
+└── c [age=60]  
+
+from bigtree import Node, print_tree
+
+root = Node("a", age=90)
+b = Node("b", age=65, parent=root)
+c = Node("c", age=60, parent=root)
+
+print_tree(root, attr_list=["age"])
+
+Que.7)Write a Python Code to create Tree by using Bigtree library of python the 
+output display should be in following form  
+Language  
+├── Python  
+│   ├── Pandas  
+│   └── Django 
+└── java  
+
+from bigtree import Node
+root=Node("Language",age=95)
+a=Node("Python",parent=root)
+b=Node("Pandas",parent=a)
+g=Node("Django",parent=a)
+c=Node("java",parent=root)
+root.show()
+
+																					Assignment Number-04 
+1) Write a Python code to perform the following operations use following dataset 
+i)Check empty or missing data in all dataset 
+ii)Check empty or missing data in column ‘Postcode’  
+iii)Display total count of missing data in each column 
+iv)Drop rows that are having missing values 
+
+import pandas as pd
+info = pd.read_csv("your_dataset.csv")  
+df = pd.DataFrame(info)
+print(df)
+print("Empty & null values:", df.isnull().any())
+print("Empty & null values in postcode:", df['postcode'].isnull().any())
+print("Total count of missing values in each column:")
+print(df.isnull().sum())
+print("Dropping rows with missing values:")
+print(df.dropna())
+
+2)  Write a Python code to perform the following operations use following dataset 
+i)Display unique value in column ‘Price’ 
+ii)Display total number (Count) unique value  
+iii)Display duplicate  rows in dataset 
+iv)Display total count of all duplicates  
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+print(df.describe())
+print("Unique values in column 'price':", df['price'].unique())
+print("Total number of unique values:", df.nunique())
+duplicate_rows = df[df.duplicated()]
+print("Duplicate rows in dataset:")
+print(duplicate_rows)
+
+total_duplicates = duplicate_rows.shape[0]
+print("Total count of all duplicate values:", total_duplicates)
+
+3) Write a Python code to perform the following operations use following dataset 
+i)Find the total marks of column Maths 
+ii)Find the Mean & standard deviation of marks in column Science 
+iii)Find minimum marks in Physics & Maximum marks in Maths 
+iv)Find minimum marks all Subjects 
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+
+print("Total marks of maths:", df['maths'].sum())
+print("Mean of science:", df['science'].mean())
+print("Standard deviation of science:", df['science'].std())
+print("Minimum mark in physics:", df['physics'].min())
+print("Maximum marks in maths:", df['maths'].max())
+print("Minimum marks in all subjects:")
+print(df.min())
+
+
+4) Write a Python code to perform the following operations use following dataset 
+i)Use groupby function to create a group of “Course” 
+ii)Display first row Group “Course” 
+iii)Display all rows in a Group “Course” 
+iv)Create a group “Maths” & display its mean
+
+
+import pandas as pd
+
+info = pd.read_csv("your_dataset.csv") 
+df = pd.DataFrame(info)
+
+grouped_by_course = df.groupby("course")
+print("Grouping by course:", grouped_by_course)
+
+print("Displaying first row of each group:")
+print(grouped_by_course.first())
+
+for name, group in grouped_by_course:
+    print("All rows in group", name)
+    print(group)
+
+mean_maths_by_name = df.groupby('name')['maths'].mean()
+print("Grouping by 'name' and displaying mean of 'maths':")
+print(mean_maths_by_name)
+
+
+																			Assignment no-5 
+Q.1 Write a Sklearn Library code to create a simple Linear Regression Algorithm that creates random number in the range (0,10000) and test the data [10,20,30] against the expression 
+=a+(2*b)+(3*c).
+from sklearn.linear_model import LinearRegression
+import random
+set_count=100
+set_limit=1000
+train_input=[]
+train_output=[]
+for i in range(set_limit):
+    a=random.randint(0,set_limit)
+    b=random.randint(0,set_limit)
+    c=random.randint(0,set_limit)
+    train_input.append([a,b,c])
+    op=a+(2*b)+(3*c)
+    train_output.append(op)
+print(train_input)
+print(train_output)
+lmodel=LinearRegression()
+lmodel.fit(train_input,train_output)
+acc=lmodel.score(train_input,train_output)
+print("Accuracy=",acc)
+x_test=[[20,50,80]]
+pred=lmodel.predict(x_test)
+print("Pred_value=",pred)
+
+
+labels = ['Train Input', 'Train Output', 'Prediction']
+sizes = [len(train_input), len(train_output), 1]
+colors = ['gold', 'yellowgreen', 'lightcoral']
+explode = (0.1, 0, 0)  # explode 1st slice
+
+plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+plt.axis('equal')
+plt.title('Data Distribution')
+plt.show()
+
+Q.2 Create a Linear Regression Model to show relation for house price prediction  by using following dataset and predict the output. 
+
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import pandas as pd
+int_train=[]
+out_train=[]
+hinfo=pd.read_csv(r"D:\BBA(C.A)\SEM 6\Data Analytics Using Python\PRACTICAL\train.csv")
+hprd=pd.DataFrame(hinfo)
+x=hprd[["UNDER_CONSTRUCTION","RERA","BHK_NO.","SQUARE_FT","READY_TO_MOVE","RESALE"]]
+y=hprd["TARGET(PRICE_IN_LACS)"]
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.9,random_state=1)
+lmodel=LinearRegression()
+lmodel.fit(x_train,y_train)
+acc=lmodel.score(x_train,y_train)
+print("Accurancy of model=",acc)
+pred=lmodel.predict(x_test)
+print("Prediction",pred)
+
+Q.3 Create a Decision Tree Classifier model on following dataset and show decision tree.
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn import tree
+import pandas as pd
+dset=pd.read_csv(r"D:\BBA(C.A)\SEM 6\Data Analytics Using Python\PRACTICAL\diabetes.csv")
+dbt=pd.DataFrame(dset)
+feat_cols=["Pregnancies","Glucose","BloodPressure","SkinThickness","Insulin","BMI","DiabetesPedigreeFunction","Age"]
+feat_out=["Outcome"]
+x=dbt[feat_cols]
+y=dbt[feat_out]
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.20,random_state=42)
+dtcl=DecisionTreeClassifier()
+dtcl.fit(x_train,y_train)
+acc=dtcl.score(x_train,y_train)
+#print("Acc=",acc)
+dtcl.predict(x_test)
+#print(dtcl)
+tree.plot_tree(dtcl)
+
+Q.4 Create K-Means clustering model following dataset.
+from sklearn.cluster import KMeans
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+kdata = pd.read_csv(r"D:\BBA(C.A)\SEM 6\Data Analytics Using Python\PRACTICAL\Kmeans.csv")
+print(kdata.head())
+
+cols = ["Age", "Anuual_income"]
+x = kdata[cols]
+
+wcss_list = []
+
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters=i, init="k-means++", random_state=42)
+    kmeans.fit(x)
+    wcss_list.append(kmeans.inertia_)
+
+plt.plot(range(1, 11), wcss_list)
+plt.title('Elbow Method')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')  # Within cluster sum of squares
+plt.show()
+
+print(wcss_list)
+
+kmeans=KMeans(n_clusters=4,init="k-means++",random_state=42)
+y_predict=kmeans.fit_predict(x)
+print("Data Assigned to clusters=",y_predict)
+
+Q.5 Create a Naive bayes classifire database 
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
+import pandas as pd
+mdata=pd.read_csv(r"C:\Users\\Downloads\Cust_Ass5.csv")
+print(mdata)
+sel_col=["Age","Estimatedsallary"]
+sel_out=["purchase"]
+x=mdata[sel_col]
+y=mdata[sel_out]
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.3,random_state=42)
+sc=StandardScaler()
+x_train=sc.fit_transform(x_train)
+x_test=sc.transform(x_test)
+classifier=GaussianNB()
+classifier.fit(x_train,y_train)
+acc=classifier.score(x_train,y_train)
+print("acc=",acc)
+op=classifier.predict(x_test)
+print("Predict result",op)
